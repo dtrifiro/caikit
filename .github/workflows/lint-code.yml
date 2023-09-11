@@ -34,10 +34,10 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install -r setup_requirements.txt
       - name: Check Formatting
-        run: tox -e fmt
+        run: nox -s fmt
       - name: Run pylint
-        run: tox -e lint
+        run: nox -s lint
       - name: Setup Graphviz # `graphviz/dot` is required for the import checker
         uses: ts-graphviz/setup-graphviz@v1
       - name: Enforce import rules
-        run: tox -e imports
+        run: nox -e imports

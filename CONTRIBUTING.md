@@ -69,33 +69,35 @@ The following tools are required:
 - [python](https://www.python.org) (v3.8+)
 - [pip](https://pypi.org/project/pip/) (v23.0+)
 
-You can setup your dev environment using [tox](https://tox.wiki/en/latest/), an environment orchestrator which allows for setting up environments for and invoking builds, unit tests, formatting, linting, etc. Install tox with:
+You can setup your dev environment using [nox](https://github.com/wntrblm/nox), an environment orchestrator which allows for setting up environments for and invoking builds, unit tests, formatting, linting, etc. Install `nox` with:
 
 ```sh
 pip install -r setup_requirements.txt
 ```
 
-If you want to manage your own virtual environment instead of using `tox`, you can install `caikit` and all dependencies with:
+```sh
+nox                 # run all sessions
+nox --list-sessions # Show available sessions
+nox -s tests        # run tests against all python versions
+nox -s tests-3.8    # run tests for python 3.8
+```
+
+
+If you want to manage your own virtual environment instead of using `nox`, you can install `caikit` and all dependencies with:
 
 ```sh
 pip install .
 ```
 
+Then run `nox` using:
+
+```sh
+nox --no-venv -s <session>
+```
+
 ### Unit tests
 
 Unit tests are enforced by the CI system. When making changes, run the tests before pushing the changes to avoid CI issues.
-
-Running unit tests against all supported Python versions is as simple as:
-
-```sh
-tox
-```
-
-Running tests against a single Python version can be done with:
-
-```sh
-tox -e py
-```
 
 ### Coding style
 
@@ -106,7 +108,7 @@ We use [pre-commit](https://pre-commit.com/) to enforce coding style using [blac
 You can invoke formatting with:
 
 ```sh
-tox -e fmt
+nox -s fmt
 ```
 
 In addition, we use [pylint](https://www.pylint.org) to perform static code analysis of the code.
@@ -114,7 +116,7 @@ In addition, we use [pylint](https://www.pylint.org) to perform static code anal
 You can invoke the linting with the following command
 
 ```sh
-tox -e lint
+nox -s lint
 ```
 
 ## Your First Code Contribution

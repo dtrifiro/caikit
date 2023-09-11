@@ -29,8 +29,8 @@ jobs:
         env:
           FLIT_PASSWORD: ${{ secrets.PYPI_TOKEN }}
         run: |
-          pip install tox
+          pip install nox
           RELEASE_VERSION=${GITHUB_REF#refs/*/}
           RELEASE_VERSION=${RELEASE_VERSION#v*}
           sed -i "s/^version = .*/version = \"${RELEASE_VERSION}\"/" pyproject.toml
-          tox -e publish
+          nox -s publish
