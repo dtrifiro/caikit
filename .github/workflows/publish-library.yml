@@ -18,6 +18,9 @@ on:
   release:
     types: [published]
 
+env:
+  FORCE_COLOR: "1"
+
 jobs:
   build:
     runs-on: ubuntu-latest
