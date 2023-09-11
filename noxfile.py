@@ -147,7 +147,7 @@ def proto3(session: nox.Session) -> None:
     )
 
 
-@nox.session(python=["3.8"])
+@nox.session(python=python_versions)
 def core(session: nox.Session) -> None:
     """run tests against caikit.core without any extras"""
     session.install("-e", ".[dev-test]")
